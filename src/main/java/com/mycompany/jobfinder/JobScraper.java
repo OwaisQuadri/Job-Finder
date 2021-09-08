@@ -28,6 +28,7 @@ public class JobScraper {
     private LinkedList<String> jobCompany = new LinkedList<>();
     private LinkedList<String> jobDesc = new LinkedList<>();
     private LinkedList<String> jobURL = new LinkedList<>();
+    private int numOfJobs=0;
     //constructor
     public JobScraper() {
     }
@@ -35,13 +36,15 @@ public class JobScraper {
     private void pageInfo() {
         System.out.println("Title: " + driver.getTitle());
         System.out.println("URL: " + driver.getCurrentUrl());
+        System.out.println("Connection made!");
     }
 
     public void getJobInfo(String query,String where) {
-        System.out.println("Going...");
+        System.out.println("Establishihng Connection . . .");
         //go to new page
         String urlQuery = "";
         String whereQuery = "";
+        //modify query to insert into URL
         for (String q : where.split(" ")) {
             whereQuery += q + "+";
         }
@@ -54,7 +57,8 @@ public class JobScraper {
         if (urlQuery.equals("+")) {
             urlQuery = "jobs";
         }
-        url = "https://ca.indeed.com/jobs?as_and=" + urlQuery + "&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&salary=&radius=25&l="+whereQuery+"&fromage=any&limit=10&sort=&psf=advsrch&from=advancedsearch";
+        url = "https://ca.indeed.com/jobs?as_and=" + urlQuery + "&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&salary=&radius=25&l="+whereQuery+"&fromage=any&limit=100&sort=&psf=advsrch&from=advancedsearch";
+        //go directly to the advanced search URL
         driver.get(url);
         //display page info
         pageInfo();
@@ -66,33 +70,36 @@ public class JobScraper {
         for (var title: titles){
             links.add(title.getAttribute("href"));
         }
-        System.out.println(links.size());
+        numOfJobs=links.size();
+//        System.out.println(numOfJobs);
         for(var link: links){
-            System.out.println(link);
+//            System.out.println(link);
             driver.get(link);
             jobURL.add(link);//add link to jobURL
-            String title=driver.findElement(By.className("jobsearch-JobInfoHeader-title")).getText();//get jobtitle
-            System.out.println(title);//output
+            String title=driver.findElement(By.className("jobsearch-JobInfoHeader-title")).getText().toLowerCase();//get jobtitle
+//            System.out.println(title);//output
             jobTitle.add(title);//put into list
-            String company=driver.findElement(By.cssSelector("div.jobsearch-DesktopStickyContainer-companyrating div")).getText();//get company
-            System.out.println(company);//output
+            String company=driver.findElement(By.cssSelector("div.jobsearch-DesktopStickyContainer-companyrating div")).getText().toLowerCase();//get company
+//            System.out.println(company);//output
             jobCompany.add(company);//put into list
-            String desc=driver.findElement(By.cssSelector("div#jobDescriptionText")).getText();//get desc
-            System.out.println(desc);//output
+            String desc=driver.findElement(By.cssSelector("div#jobDescriptionText")).getText().toLowerCase();//get desc
+//            System.out.println(desc);//output
             jobDesc.add(desc);//put into list
-            System.out.println("\n");
         }
     }
-    LinkedList<String> getJobTitle() {
+    public LinkedList<String> getJobTitle() {
         return jobTitle;
     }
-    LinkedList<String> getJobCompany() {
+    public LinkedList<String> getJobCompany() {
         return jobCompany;
     }
-    LinkedList<String> getJobDesc() {
+    public LinkedList<String> getJobDesc() {
         return jobDesc;
     }
-    LinkedList<String> getJobURL() {
+    public LinkedList<String> getJobURL() {
         return jobURL;
+    }
+    public int getNumOfJobs() {
+        return numOfJobs;
     }
 }
