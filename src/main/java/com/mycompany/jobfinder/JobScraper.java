@@ -54,7 +54,7 @@ public class JobScraper {
         if (urlQuery.equals("+")) {
             urlQuery = "jobs";
         }
-        url = "https://ca.indeed.com/jobs?as_and=" + urlQuery + "&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&salary=&radius=25&l="+whereQuery+"&fromage=any&limit=50&sort=&psf=advsrch&from=advancedsearch";
+        url = "https://ca.indeed.com/jobs?as_and=" + urlQuery + "&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&salary=&radius=25&l="+whereQuery+"&fromage=any&limit=10&sort=&psf=advsrch&from=advancedsearch";
         driver.get(url);
         //display page info
         pageInfo();

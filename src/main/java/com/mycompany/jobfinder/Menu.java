@@ -49,7 +49,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(promptLabel);
         promptLabel.setBounds(0, 0, 390, 50);
         getContentPane().add(whatField);
-        whatField.setBounds(60, 60, 140, 28);
+        whatField.setBounds(60, 60, 140, 22);
 
         goButton.setText("Go");
         goButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,9 +58,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(goButton);
-        goButton.setBounds(120, 280, 280, 40);
+        goButton.setBounds(170, 280, 230, 40);
         getContentPane().add(whereField);
-        whereField.setBounds(260, 60, 140, 28);
+        whereField.setBounds(260, 60, 140, 22);
 
         jLabel1.setText("What:");
         getContentPane().add(jLabel1);
@@ -72,15 +72,16 @@ public class Menu extends javax.swing.JFrame {
 
         skillsTextArea.setColumns(20);
         skillsTextArea.setRows(5);
+        skillsTextArea.setText("skill - 5, skill2 - 3, Node.js - 5");
         jScrollPane1.setViewportView(skillsTextArea);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(98, 130, 310, 140);
+        jScrollPane1.setBounds(168, 130, 240, 140);
 
-        jLabel3.setText("<html>\n<p>\nSkills:\n</p>\n<p>(separated by commas)</p>");
+        jLabel3.setText("<html> <p> Skills: </p> <p>(separated by commas in the format \"SKILL - SCORE\")</p>");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 140, 80, 150);
+        jLabel3.setBounds(10, 140, 150, 110);
 
         setSize(new java.awt.Dimension(444, 368));
         setLocationRelativeTo(null);
@@ -90,35 +91,57 @@ public class Menu extends javax.swing.JFrame {
         JobScraper j = new JobScraper();
         String what = whatField.getText();
         String where = whereField.getText();
-        // information for all the jobs
-        j.getJobInfo(what, where);
-        //get job title, company and description
-        LinkedList<String> jobTitle = j.getJobTitle ();
-        LinkedList<String> jobCompany = j.getJobCompany ();
-        LinkedList<String> jobDesc = j.getJobDesc ();
-        LinkedList<String> jobURL = j.getJobURL ();
-        //get skills info (skill name and score from 1-10) from GUI
+        String skills = skillsTextArea.getText();
+        boolean noSkill=skills.isEmpty();
+        if (noSkill) {
+            System.out.println("please enter skills in proper textArea");
+        }else{
+            // information for all the jobs
+            j.getJobInfo(what, where);
+            //get job title, company and description
+            LinkedList<String> jobTitle = j.getJobTitle();
+            LinkedList<String> jobCompany = j.getJobCompany();
+            LinkedList<String> jobDesc = j.getJobDesc();
+            LinkedList<String> jobURL = j.getJobURL();
+            //get skills info (skill name and score from 1-10) from GUI
+
+            //split skills by ', '
+            String[] skillAndScore = skills.split(", ");
+            //split name and score by ' - '
+            int numOfSkills = skillAndScore.length;
+            String[] skillName = new String[numOfSkills];
+            int[] skillScore = new int[numOfSkills];
+            int count = 0;
+            for (String s : skillAndScore) {
+                String[] temp = s.split(" - ");
+                skillName[count] = temp[0];
+                skillScore[count] = Integer.parseInt(temp[1]);
+                //if score >10, make it 10 and if score < 1, make it 1
+                if (skillScore[count]>10){
+                    skillScore[count]=10;
+                }else if(skillScore[count]<1){
+                    skillScore[count]=1;
+                }
+                count++;
+            }
+            //test array by outputting 
+            for (int i = 0; i < numOfSkills; i++) {
+                System.out.println("Mastery of "+skillName[i]+" with a rating of "+skillScore[i]+"/10");
+            }
+        }
         
-        //split skills by ', '
-        
-        //split name and score by ' - '
-        
-        //if score >10, make it 10 and if score < 1, make it 1
-        
+
         //create a dictionary/map 'jobScore'
-        
         //for each job description if desc contains skill then add score onto jobScore for job index
-        
         //sort job from highest jobScore to lowest
-        
         //send jobTitle, jobScore, jobCompany and jobURL to a file and to the console
-        
+
     }//GEN-LAST:event_goButtonActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -132,41 +155,17 @@ public static void main(String args[]) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

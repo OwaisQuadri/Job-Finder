@@ -55,7 +55,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="280" width="280" height="40"/>
+          <AbsoluteConstraints x="170" y="280" width="230" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -92,7 +92,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="98" y="130" width="310" height="140"/>
+          <AbsoluteConstraints x="168" y="130" width="240" height="140"/>
         </Constraint>
       </Constraints>
 
@@ -102,18 +102,19 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="skill - 5, skill2 - 3, Node.js - 5"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p&gt;&#xa;Skills:&#xa;&lt;/p&gt;&#xa;&lt;p&gt;(separated by commas)&lt;/p&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;p&gt; Skills: &lt;/p&gt; &lt;p&gt;(separated by commas in the format &quot;SKILL - SCORE&quot;)&lt;/p&gt;"/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="140" width="80" height="150"/>
+          <AbsoluteConstraints x="10" y="140" width="150" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
