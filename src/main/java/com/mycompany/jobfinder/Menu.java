@@ -65,6 +65,8 @@ public class Menu extends javax.swing.JFrame {
         promptLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(promptLabel);
         promptLabel.setBounds(0, 10, 550, 50);
+
+        whatField.setText("software");
         getContentPane().add(whatField);
         whatField.setBounds(130, 110, 320, 22);
 
@@ -107,6 +109,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setText("UserName:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(30, 60, 80, 30);
+
+        usernameField.setText("owais");
         getContentPane().add(usernameField);
         usernameField.setBounds(110, 60, 240, 30);
 

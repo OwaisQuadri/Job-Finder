@@ -43,6 +43,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="whatField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="software"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="130" y="110" width="320" height="-1"/>
@@ -137,6 +140,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="usernameField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="owais"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="110" y="60" width="240" height="30"/>

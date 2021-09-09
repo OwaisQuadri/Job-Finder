@@ -73,7 +73,7 @@ public class JobScraper {
         //display current page info
         pageInfo();
         int pages = (Integer.parseInt(num) + 1) / 10;
-        if (pages>100)pages=100;
+        if (pages>125)pages=125;
         //output number of jobs being searched through
         System.out.println("Scanning through ~" + pages*10 + " jobs");
         for (int page = 0; page < pages; page++) {
@@ -89,7 +89,7 @@ public class JobScraper {
             for (var title : titles) {
                 //make sure there are no duplicates
                 String tempLink = title.getAttribute("href");
-                links.putIfAbsent(tempLink, "");
+                links.put(tempLink, "");
 
             }
         }
