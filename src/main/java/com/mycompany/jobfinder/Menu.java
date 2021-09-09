@@ -138,6 +138,8 @@ public class Menu extends javax.swing.JFrame {
         String where = whereField.getText();
         String skills = skillsTextArea.getText().toLowerCase();
         boolean noSkill = skills.isEmpty();
+        //timer
+        double start=System.currentTimeMillis();
         if (noSkill) {
             System.out.println("please enter skills in proper textArea");
         } else {
@@ -211,6 +213,10 @@ public class Menu extends javax.swing.JFrame {
             //sort
             Collections.sort(list, (Entry<Integer, Integer> a, Entry<Integer, Integer> b) -> b.getValue().compareTo(a.getValue()));
             //sorted
+            //end timer
+            double end=System.currentTimeMillis();
+            double elapsedTime=(end-start)/1000;
+            System.out.println("calculations completed: "+elapsedTime+" seconds");
             //send sorted list of jobTitles, jobScores, jobCompanies and jobURL to the output
             System.out.println("\nJOBS IN ORDER FROM HIGHEST SCORE TO LOWEST:\n");
             for (var element : list) {
